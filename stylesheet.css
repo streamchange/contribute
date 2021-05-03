@@ -1,0 +1,44 @@
+body {
+  background-color: rgb(192, 86, 16);
+}
+
+h1 {
+  color: rgb(219, 219, 219);
+  margin-left: 20px;
+}
+.containerer{
+  width:85%;
+  
+}
+.container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
+  border: 4px solid white;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+iframe.callerFrame{
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+
+
+}
+iframe.clickerFrame {
+  border:0px #ffffff none;
+  width: 12.5%;
+  height: 40%;
+  position: relative;
+  float: right;
+  border: 4px solid white;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}

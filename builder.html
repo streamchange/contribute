@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Build A Contributor Link 🦀</title>
+    <link rel="stylesheet" href="stylesheet2.css">
+  </head>
+
+  
+  <body>
+    <div class="responsive">
+      <div class="form">
+        <h1>Build A Contributor Link 🦀</h1>
+        <label for="nameInput">Presenter Name</label>
+        <input type="text" id="nameInput" value='Nick Waterman' size=30>
+        <br>
+        <label for="callPassInput">vMix Call Password</label>
+        <input type="text" id="callPassInput" value='7744808725' size=30>
+        <br>
+        <label for="clickerCodeInput">Internet Clicker Code</label>
+        <input type="text" id="clickerCodeInput" value='badgerbadgerbadger' size=30>
+        <br>
+        <button id="copyBtn">Copy link to clipboard</button>
+        <button id="goBtn">Go to link</button>
+        <br>
+        <code id="linkOutput"></code>
+        <br id="extraLine">
+      </div>
+    </div>
+  </body>
+</html>
+
+<script type="text/javascript">
+  
+  var linkOutput = document.getElementById('linkOutput')
+  linkOutput.style.display = "none"
+
+  var extraLine = document.getElementById('extraLine')
+  extraLine.style.display = "block"
+
+  const copyBtn = document.getElementById('copyBtn');
+  copyBtn.addEventListener("click" ,copyLink);
+
+  const goBtn = document.getElementById('goBtn');
+  goBtn.addEventListener("click" ,gotoLink);
+
+  function copyLink(){
+    var nameInput = document.getElementById('nameInput').value
+    var nameClean = encodeURIComponent(nameInput)
+    var callPass = document.getElementById('callPassInput').value
+    var clickerCode = document.getElementById('clickerCodeInput').value
+
+    console.log("name: " + nameInput)
+    console.log("callpass: " + callPass)
+    console.log("clickercode: " + clickerCode)
+
+    var link = `contribute.streamchange.com/?name=${nameClean}&callpass=${callPass}&clickercode=${clickerCode}`;
+
+    navigator.clipboard.writeText(link)
+    linkOutput.innerText = 'Copied link to clipboard'
+    linkOutput.style.display = "block"
+
+    extraLine.style.display = "none"
+  }
+
+  function gotoLink(){
+    var nameInput = document.getElementById('nameInput').value
+    var callPass = document.getElementById('callPassInput').value
+    var clickerCode = document.getElementById('clickerCodeInput').value
+    var nameClean = encodeURIComponent(nameInput)
+
+    console.log("name: " + nameInput)
+    console.log("callpass: " + callPass)
+    console.log("clickercode: " + clickerCode)
+
+    var link = `contribute.streamchange.com/?name=${nameClean}&callpass=${callPass}&clickercode=${clickerCode}`;
+
+    window.location.assign("https://"+link);
+  }
+
+</script>

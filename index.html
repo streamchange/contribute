@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>StreamChange Contributor</title>
+    <link rel="stylesheet" href="stylesheet.css">
+
+  
+  
+  </head>
+
+
+  <body>
+
+    <iframe class="clickerFrame"
+            id="clickerFrame"
+            src='https://internetclicker.com'
+            name="clicker"
+            scrolling='no'
+            frameborder='0'
+            margin='0'
+            allow-fullscreen>
+    </iframe>
+    <div class="containerer">
+      <div class="container">
+        <iframe class="callerFrame"
+                id="callerFrame"
+                src="https://www.vmixcall.com/"
+                frameborder="0"
+                allow="camera; microphone; fullscreen">
+        </iframe>
+      </div>
+</div>
+
+  </body>
+</html>
+
+<script type="text/javascript">
+  const queryString = window.location.search;
+  console.log(queryString);
+
+  const urlParams = new URLSearchParams(queryString);
+  const name = urlParams.get('name')
+  const callPass = urlParams.get('callpass')
+  const clickerCode = urlParams.get('clickercode')
+
+  console.log("came: " + name)
+  console.log("callpass: " + callPass)
+  console.log("clickercode: " + clickerCode)
+
+
+  var clickerUrl = `https://internetclicker.com?code=${clickerCode}&branding=false&name=${name}&hs=1`
+  var clickerFrame = document.getElementById("clickerFrame")
+  clickerFrame.src = clickerUrl
+
+  var callerUrl = `https://advanced.vmixcall.com/call.htm?Key=${callPass}&Name=${name}`
+  var callerFrame = document.getElementById("callerFrame")
+  callerFrame.src = callerUrl
+
+</script>
