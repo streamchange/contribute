@@ -53,8 +53,8 @@
 
 
   var styleRoot = document.querySelector(':root');
-  styleRoot.style.setProperty('--backgroundColour', backgroundColour);
-  styleRoot.style.setProperty('--borderColour', borderColour);
+  document.styleSheets.setProperty('--backgroundColour', backgroundColour);
+  document.styleSheets.setProperty('--borderColour', borderColour);
 
 
   console.log("came: " + name)
