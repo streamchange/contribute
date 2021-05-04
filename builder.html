@@ -1,80 +1,98 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Build A Contributor Link 🦀</title>
-    <link rel="stylesheet" href="stylesheet2.css">
-  </head>
+<head>
+  <title>Build A Contributor Link 🦀</title>
+  <link rel="stylesheet" href="stylesheet.css">
+</head>
 
-  
-  <body>
-    <div class="responsive">
-      <div class="form">
-        <h1>Build A Contributor Link 🦀</h1>
-        <label for="nameInput">Presenter Name</label>
-        <input type="text" id="nameInput" value='Nick Waterman' size=30>
-        <br>
-        <label for="callPassInput">vMix Call Password</label>
-        <input type="text" id="callPassInput" value='7744808725' size=30>
-        <br>
-        <label for="clickerCodeInput">Internet Clicker Code</label>
-        <input type="text" id="clickerCodeInput" value='badgerbadgerbadger' size=30>
-        <br>
-        <button id="copyBtn">Copy link to clipboard</button>
-        <button id="goBtn">Go to link</button>
-        <br>
-        <code id="linkOutput"></code>
-        <br id="extraLine">
-      </div>
+
+<body>
+  <div class="responsive">
+    <div class="form">
+      <h1>Build A Contributor Link 🦀</h1>
+      <label for="nameInput">Presenter Name</label>
+      <input type="text" id="nameInput" value='Nick Waterman' size=30>
+      <br>
+      <label for="callPassInput">vMix Call Password</label>
+      <input type="text" id="callPassInput" value='7744808725' size=30>
+      <br>
+      <label for="clickerCodeInput">Internet Clicker Code</label>
+      <input type="text" id="clickerCodeInput" value='badgerbadgerbadger' size=30>
+      <br>
+      <button id="copyBtn">Copy link to clipboard</button>
+      <button id="goBtn">Go to link</button>
+      <br>
+      <code id="linkOutput"></code>
+      <br id="extraLine">
+      <br>
+      <br>
+      <br>
+      <br>
+      <label for="backgroundColour">Background Colour (#df7020)</label>
+      <input type="text" id="backgroundColour" value='#df7020' size=30>
+      <br>
+      <label for="borderColour">Border Colour (#FFFFFF)</label>
+      <input type="text" id="borderColour" value='#FFFFFF' size=30>
+      <br>
+      <label for="logoSource">Logo Source</label>
+      <input type="text" id="borderColour" value='https://virtual.scenechange.com.au/wp-content/uploads/2020/08/scene_change-logo.png'>
+      <br>
+
     </div>
-  </body>
+  </div>
+</body>
 </html>
 
 <script type="text/javascript">
-  
-  var linkOutput = document.getElementById('linkOutput')
-  linkOutput.style.display = "none"
 
-  var extraLine = document.getElementById('extraLine')
-  extraLine.style.display = "block"
+var linkOutput = document.getElementById('linkOutput')
+linkOutput.style.display = "none"
 
-  const copyBtn = document.getElementById('copyBtn');
-  copyBtn.addEventListener("click" ,copyLink);
+var extraLine = document.getElementById('extraLine')
+extraLine.style.display = "block"
 
-  const goBtn = document.getElementById('goBtn');
-  goBtn.addEventListener("click" ,gotoLink);
+const copyBtn = document.getElementById('copyBtn');
+copyBtn.addEventListener("click" ,copyBtnPressed);
 
-  function copyLink(){
-    var nameInput = document.getElementById('nameInput').value
-    var nameClean = encodeURIComponent(nameInput)
-    var callPass = document.getElementById('callPassInput').value
-    var clickerCode = document.getElementById('clickerCodeInput').value
+const goBtn = document.getElementById('goBtn');
+goBtn.addEventListener("click" ,gotoBtnPressed);
 
-    console.log("name: " + nameInput)
-    console.log("callpass: " + callPass)
-    console.log("clickercode: " + clickerCode)
+var link = 'initial data'
+function copyBtnPressed(){
+  updateLink(copyLink)
+}
 
-    var link = `contribute.streamchange.com/?name=${nameClean}&callpass=${callPass}&clickercode=${clickerCode}`;
+function gotoBtnPressed(){
+  updateLink(gotoLink)
+}
 
-    navigator.clipboard.writeText(link)
-    linkOutput.innerText = 'Copied link to clipboard'
-    linkOutput.style.display = "block"
+function updateLink(callback){
+  var nameInput = document.getElementById('nameInput').value
+  var nameClean = encodeURIComponent(nameInput)
+  var callPass = document.getElementById('callPassInput').value
+  var clickerCode = document.getElementById('clickerCodeInput').value
+  var backgroundColour = document.getElementById('clickerCodeInput').value
+  var border = true
+  var borderColour = "#ffffff"
 
-    extraLine.style.display = "none"
+
+  console.log("name: " + nameInput)
+  console.log("callpass: " + callPass)
+  console.log("clickercode: " + clickerCode)
+
+  link = `contribute.streamchange.com/?name=${nameClean}&callPass=${callPass}&clickerCode=${clickerCode}&backgroundColour=${backgroundColour}&borderColour=${borderColour}`;
+  callback()
   }
 
-  function gotoLink(){
-    var nameInput = document.getElementById('nameInput').value
-    var callPass = document.getElementById('callPassInput').value
-    var clickerCode = document.getElementById('clickerCodeInput').value
-    var nameClean = encodeURIComponent(nameInput)
+function copyLink(){
 
-    console.log("name: " + nameInput)
-    console.log("callpass: " + callPass)
-    console.log("clickercode: " + clickerCode)
-
-    var link = `contribute.streamchange.com/?name=${nameClean}&callpass=${callPass}&clickercode=${clickerCode}`;
-
-    window.location.assign("https://"+link);
-  }
+  navigator.clipboard.writeText(link)
+  linkOutput.innerText = 'Copied link to clipboard'
+  linkOutput.style.display = "block"
+  extraLine.style.display = "none"
+}
+function gotoLink(){
+  window.location.assign("https://"+link);
+}
 
 </script>

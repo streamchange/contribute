@@ -9,29 +9,35 @@
   </head>
 
 
-  <body>
-
-    <iframe class="clickerFrame"
-            id="clickerFrame"
-            src='https://internetclicker.com'
-            name="clicker"
-            scrolling='no'
-            frameborder='0'
-            margin='0'
-            allow-fullscreen>
-    </iframe>
-    <div class="containerer">
-      <div class="container">
-        <iframe class="callerFrame"
-                id="callerFrame"
-                src="https://www.vmixcall.com/"
-                frameborder="0"
-                allow="camera; microphone; fullscreen">
-        </iframe>
-      </div>
+<body>
+<div class="sideBarRight">
+  <iframe class="clickerFrame"
+          id="clickerFrame"
+          src='https://internetclicker.com'
+          name="clicker"
+          scrolling='no'
+          frameborder='0'
+          margin='0'
+          allow-fullscreen>
+  </iframe>
+  <div class="logoDiv">
+  <img class="logo" id="logo" src='https://virtual.scenechange.com.au/wp-content/uploads/2020/08/scene_change-logo.png'>
 </div>
+</div>
+  <div class="frameContainerer">
+    <div class="frameContainer">
+      <iframe class="callerFrame"
+              id="callerFrame"
+              src="https://www.vmixcall.com/"
+              frameborder="0"
+              allow="camera; microphone; fullscreen">
+      </iframe>
+    </div>
+  </div>
 
-  </body>
+
+</body>
+
 </html>
 
 <script type="text/javascript">
@@ -42,12 +48,22 @@
   const name = urlParams.get('name')
   const callPass = urlParams.get('callpass')
   const clickerCode = urlParams.get('clickercode')
+  const backgroundColour = urlParams.get('backgroundColour')
+  const borderColour = urlParams.get('borderColour')
+
+
+  var styleRoot = document.querySelector(':root');
+  styleRoot.style.setProperty('--backgroundColour', backgroundColour);
+  styleRoot.style.setProperty('--borderColour', borderColour);
+
 
   console.log("came: " + name)
-  console.log("callpass: " + callPass)
-  console.log("clickercode: " + clickerCode)
-
-
+  console.log("callPass: " + callPass)
+  console.log("clickerCode: " + clickerCode)
+  console.log("borderColour: " + borderColour)
+  console.log("backgroundColour: " + backgroundColour)
+  console.log("logo: " + logo)
+  
   var clickerUrl = `https://internetclicker.com?code=${clickerCode}&branding=false&name=${name}&hs=1`
   var clickerFrame = document.getElementById("clickerFrame")
   clickerFrame.src = clickerUrl
