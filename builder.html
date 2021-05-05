@@ -86,6 +86,7 @@ function copyLink(){
   linkOutput.innerText = 'Copied link to clipboard'
   linkOutput.style.display = "block"
   extraLine.style.display = "none"
+  document.activeElement.blur()
 }
 function gotoLink(){
   window.location.assign("https://"+link);

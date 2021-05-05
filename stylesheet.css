@@ -276,6 +276,7 @@ align-self: flex-end
  }
  
  code {
+   color: #606c76;
    background: #f4f5f6;
    border-radius: .4rem;
    font-size: 100%;
