@@ -6,7 +6,7 @@
 </head>
 
 
-<body>
+<body class="body">
   <div class="responsive">
     <div class="form">
       <h1>Build A Contributor Link 🦀</h1>
@@ -25,17 +25,14 @@
       <code id="linkOutput"></code>
       <br id="extraLine">
       <br>
+      <label for="backgroundColour">Background Colour (hex value without # eg. df7020)</label>
+      <input type="text" id="backgroundColourInput" value='df7020' size=30>
       <br>
+      <label for="borderColour">Border Colour (hex value without # eg. FFFFFF)</label>
+      <input type="text" id="borderColourInput" value='FFFFFF' size=30>
       <br>
-      <br>
-      <label for="backgroundColour">Background Colour (#df7020)</label>
-      <input type="text" id="backgroundColourInput" value='#df7020' size=30>
-      <br>
-      <label for="borderColour">Border Colour (#FFFFFF)</label>
-      <input type="text" id="borderColourInput" value='#FFFFFF' size=30>
-      <br>
-      <label for="logoSource">Logo Source (doesnt work yet)</label>
-      <input type="text" id="logoSource" value='https://virtual.scenechange.com.au/wp-content/uploads/2020/08/scene_change-logo.png'>
+      <!--label for="logoSource">Logo Source (doesnt work yet)</label>
+      <input type="text" id="logoSource" value='https://virtual.scenechange.com.au/wp-content/uploads/2020/08/scene_change-logo.png'-->
       <br>
 
     </div>
@@ -79,7 +76,7 @@ function updateLink(callback){
   console.log("callpass: " + callPass)
   console.log("clickercode: " + clickerCode)
 
-  link = `contribute.streamchange.com/?name=${nameClean}&callPass=${callPass}&clickerCode=${clickerCode}&backgroundColour=${backgroundColour}&borderColour=${borderColour}`;
+  link = `contribute.streamchange.com/?name=${nameClean}&callpass=${callPass}&clickercode=${clickerCode}&backgroundcolour=${backgroundColour}&bordercolour=${borderColour}`;
   callback()
   }
 

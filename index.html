@@ -9,28 +9,19 @@
   </head>
 
 
-<body>
+<body id='indexBody'>
+  
 <div class="sideBarRight">
-  <iframe class="clickerFrame"
-          id="clickerFrame"
-          src='https://internetclicker.com'
-          name="clicker"
-          scrolling='no'
-          frameborder='0'
-          margin='0'
-          allow-fullscreen>
+  <iframe class="clickerFrame" id="clickerFrame" src='https://internetclicker.com' name="clicker" scrolling='no' frameborder='0' margin='0' allow-fullscreen>
   </iframe>
   <div class="logoDiv">
   <img class="logo" id="logo" src='https://virtual.scenechange.com.au/wp-content/uploads/2020/08/scene_change-logo.png'>
 </div>
+
 </div>
   <div class="frameContainerer">
-    <div class="frameContainer">
-      <iframe class="callerFrame"
-              id="callerFrame"
-              src="https://www.vmixcall.com/"
-              frameborder="0"
-              allow="camera; microphone; fullscreen">
+    <div class="frameContainer" id='frameContainer'>
+      <iframe class="callerFrame" id="callerFrame" src="https://www.vmixcall.com/" frameborder="0" allow="camera; microphone; fullscreen">
       </iframe>
     </div>
   </div>
@@ -48,22 +39,29 @@
   const name = urlParams.get('name')
   const callPass = urlParams.get('callpass')
   const clickerCode = urlParams.get('clickercode')
-  const backgroundColour = urlParams.get('backgroundColour')
-  const borderColour = urlParams.get('borderColour')
+  const backgroundColour = "#"+urlParams.get('backgroundcolour')
+  const borderColour = "#"+urlParams.get('bordercolour')
 
-
-  var styleRoot = document.querySelector(':root');
-  document.styleSheets.setProperty('--backgroundColour', backgroundColour);
-  document.styleSheets.setProperty('--borderColour', borderColour);
-
-
-  console.log("came: " + name)
+  console.log("name: " + name)
   console.log("callPass: " + callPass)
   console.log("clickerCode: " + clickerCode)
   console.log("borderColour: " + borderColour)
   console.log("backgroundColour: " + backgroundColour)
   console.log("logo: " + logo)
-  
+if (backgroundColour == "#null"){
+  document.getElementById('indexBody').style.backgroundColor = "#df7020"
+} else {
+  document.getElementById('indexBody').style.backgroundColor = backgroundColour
+}
+
+if (borderColour == "#null"){
+  document.getElementById('frameContainer').style.borderColor = "#FFFFFF"
+  document.getElementById('clickerFrame').style.borderColor = "#FFFFFF"
+} else{
+  document.getElementById('frameContainer').style.borderColor = borderColour
+  document.getElementById('clickerFrame').style.borderColor = borderColour
+}
+
   var clickerUrl = `https://internetclicker.com?code=${clickerCode}&branding=false&name=${name}&hs=1`
   var clickerFrame = document.getElementById("clickerFrame")
   clickerFrame.src = clickerUrl
