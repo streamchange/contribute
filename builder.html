@@ -19,21 +19,23 @@
       <label for="clickerCodeInput">Internet Clicker Code</label>
       <input type="text" id="clickerCodeInput" value='badgerbadgerbadger' size=30>
       <br>
-      <button id="copyBtn">Copy link to clipboard</button>
-      <button id="goBtn">Go to link</button>
+      <input type="checkbox" id="optionalCheckbox" onclick="showOptional()">
+      <strong>Use Optional Settings</strong>
       <br>
-      <code id="linkOutput"></code>
-      <br id="extraLine">
-      <br>
+      <form id="optional" style="display:none">
       <label for="backgroundColour">Background Colour (hex value without # eg. df7020)</label>
       <input type="text" id="backgroundColourInput" value='df7020' size=30>
       <br>
       <label for="borderColour">Border Colour (hex value without # eg. FFFFFF)</label>
       <input type="text" id="borderColourInput" value='FFFFFF' size=30>
-      <br>
       <!--label for="logoSource">Logo Source (doesnt work yet)</label>
       <input type="text" id="logoSource" value='https://virtual.scenechange.com.au/wp-content/uploads/2020/08/scene_change-logo.png'-->
+      </form>
+      <button id="copyBtn">Copy link to clipboard</button>
+      <button id="goBtn">Go to link</button>
       <br>
+      <code id="linkOutput"></code>
+      <br id="extraLine">
 
     </div>
   </div>
@@ -55,6 +57,8 @@ const goBtn = document.getElementById('goBtn');
 goBtn.addEventListener("click" ,gotoBtnPressed);
 
 var link = 'initial data'
+var optionalCheckbox = document.getElementById("optionalCheckbox");
+
 function copyBtnPressed(){
   updateLink(copyLink)
 }
@@ -76,9 +80,20 @@ function updateLink(callback){
   console.log("callpass: " + callPass)
   console.log("clickercode: " + clickerCode)
 
-  link = `contribute.streamchange.com/?name=${nameClean}&callpass=${callPass}&clickercode=${clickerCode}&backgroundcolour=${backgroundColour}&bordercolour=${borderColour}`;
-  callback()
+  link = `contribute.streamchange.com/?name=${nameClean}&callpass=${callPass}&clickercode=${clickerCode}`
+
+  if(optionalCheckbox.checked == true){
+    link += `&backgroundcolour=${backgroundColour}&bordercolour=${borderColour}`
+
   }
+
+  callback()
+
+  }
+
+
+  //
+
 
 function copyLink(){
 
@@ -90,6 +105,19 @@ function copyLink(){
 }
 function gotoLink(){
   window.location.assign("https://"+link);
+}
+function showOptional() {
+  // Get the checkbox
+
+  // Get the output text
+  var text = document.getElementById("optional");
+
+  // If the checkbox is checked, display the output text
+  if (optionalCheckbox.checked == true){
+    text.style.display = "block";
+  } else {
+    text.style.display = "none";
+  }
 }
 
 </script>
