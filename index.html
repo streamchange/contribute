@@ -41,6 +41,7 @@
   const clickerCode = urlParams.get('clickercode')
   const backgroundColour = "#"+urlParams.get('backgroundcolour')
   const borderColour = "#"+urlParams.get('bordercolour')
+  const logo = urlParams.get('logo')
 
   console.log("name: " + name)
   console.log("callPass: " + callPass)
@@ -60,6 +61,10 @@ if (borderColour == "#null"){
 } else{
   document.getElementById('frameContainer').style.borderColor = borderColour
   document.getElementById('clickerFrame').style.borderColor = borderColour
+}
+
+if (logo == false){
+  document.getElementById('logo').style.display = false
 }
 
   var clickerUrl = `https://internetclicker.com?code=${clickerCode}&branding=false&name=${name}&hs=1`
