@@ -28,8 +28,8 @@
       <br>
       <label for="borderColour">Border Colour (hex value without # eg. FFFFFF)</label>
       <input type="text" id="borderColourInput" value='FFFFFF' size=30>
-      <!--label for="logoSource">Logo Source (doesnt work yet)</label>
-      <input type="text" id="logoSource" value='https://virtual.scenechange.com.au/wp-content/uploads/2020/08/scene_change-logo.png'-->
+      <input type="checkbox" id="logoCheckbox">
+      <strong>Hide Scene Change Logo</strong>
       </form>
       <button id="copyBtn">Copy link to clipboard</button>
       <button id="goBtn">Go to link</button>
@@ -59,6 +59,8 @@ goBtn.addEventListener("click" ,gotoBtnPressed);
 var link = 'initial data'
 var optionalCheckbox = document.getElementById("optionalCheckbox");
 
+var logoCheckbox = document.getElementById("logoCheckbox");
+
 function copyBtnPressed(){
   updateLink(copyLink)
 }
@@ -75,7 +77,6 @@ function updateLink(callback){
   var backgroundColour = document.getElementById('backgroundColourInput').value
   var borderColour = document.getElementById('borderColourInput').value
 
-
   console.log("name: " + nameInput)
   console.log("callpass: " + callPass)
   console.log("clickercode: " + clickerCode)
@@ -84,35 +85,28 @@ function updateLink(callback){
 
   if(optionalCheckbox.checked == true){
     link += `&backgroundcolour=${backgroundColour}&bordercolour=${borderColour}`
-
+    if(logoCheckbox.checked == true){
+      link+= `&logo=false`
+    }
   }
-
   callback()
-
-  }
-
-
-  //
+}
 
 
 function copyLink(){
-
   navigator.clipboard.writeText(link)
   linkOutput.innerText = 'Copied link to clipboard'
   linkOutput.style.display = "block"
   extraLine.style.display = "none"
   document.activeElement.blur()
 }
+
 function gotoLink(){
   window.location.assign("https://"+link);
 }
+
 function showOptional() {
-  // Get the checkbox
-
-  // Get the output text
   var text = document.getElementById("optional");
-
-  // If the checkbox is checked, display the output text
   if (optionalCheckbox.checked == true){
     text.style.display = "block";
   } else {
