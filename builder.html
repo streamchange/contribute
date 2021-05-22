@@ -94,7 +94,7 @@ function updateLink(callback){
 
 
 function copyLink(){
-  navigator.clipboard.writeText(link)
+  navigator.clipboard.writeText(""+link)
   linkOutput.innerText = 'Copied link to clipboard'
   linkOutput.style.display = "block"
   extraLine.style.display = "none"
@@ -102,7 +102,7 @@ function copyLink(){
 }
 
 function gotoLink(){
-  window.location.assign("https://"+link);
+  window.location.assign(link);
 }
 
 function showOptional() {
