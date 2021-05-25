@@ -26,10 +26,11 @@ if (queryString){
 let callerName, callPass, clickerCode, backgroundColour, borderColour, logo, short
 
 if (urlParams.get('a')){
-  console.log("a")
+  console.log("short")
   short = urlParams.get('a')
   useShort()
 } else {
+  console.log("long")
   callerName = urlParams.get('name')
   callPass = urlParams.get('callpass')
   clickerCode = urlParams.get('clickercode')
