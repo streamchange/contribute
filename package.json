@@ -1,0 +1,24 @@
+{
+  "name": "contribute",
+  "version": "1.0.0",
+  "description": "Web page to combine frequently used contributor tools",
+  "main": "index.js",
+  "dependencies": {
+    "firebase": "^8.6.2",
+    "firebase-tools": "^9.11.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/streamchange/contribute.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/streamchange/contribute/issues"
+  },
+  "homepage": "https://github.com/streamchange/contribute#readme"
+}

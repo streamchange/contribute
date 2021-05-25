@@ -1,42 +1,107 @@
 const queryString = window.location.search;
-  console.log(queryString);
+const urlParams = new URLSearchParams(queryString);
 
-  const urlParams = new URLSearchParams(queryString);
-  const name = urlParams.get('name')
-  const callPass = urlParams.get('callpass')
-  const clickerCode = urlParams.get('clickercode')
-  const backgroundColour = "#"+urlParams.get('backgroundcolour')
-  const borderColour = "#"+urlParams.get('bordercolour')
-  const logo = urlParams.get('logo')
+// Initialize Firebase
+var firebaseConfig = {
+  apiKey: "AIzaSyAp-SRZT5PpRufiqKdHRgf-ayoyHZ7bKCM",
+  authDomain: "contribute-965e3.firebaseapp.com",
+  databaseURL: "https://contribute-965e3-default-rtdb.firebaseio.com",
+  projectId: "contribute-965e3",
+  storageBucket: "contribute-965e3.appspot.com",
+  messagingSenderId: "398032504631",
+  appId: "1:398032504631:web:69e2e84cb2f6ec666efcb2",
+  measurementId: "G-ZNBE4YKJ7S"    
+};
 
-  console.log("name: " + name)
-  console.log("callPass: " + callPass)
-  console.log("clickerCode: " + clickerCode)
-  console.log("borderColour: " + borderColour)
-  console.log("backgroundColour: " + backgroundColour)
-  console.log("logo: " + logo)
-if (backgroundColour == "#null"){
-  document.getElementById('indexBody').style.backgroundColor = "#df7020"
+firebase.initializeApp(firebaseConfig);
+
+
+//TODO.. redirect or say there has been an issue or something when no parameters are entered
+if (queryString){
+  console.log('queryString exists')
 } else {
-  document.getElementById('indexBody').style.backgroundColor = backgroundColour
+  console.log("no params")
 }
 
-if (borderColour == "#null"){
-  document.getElementById('frameContainer').style.borderColor = "#FFFFFF"
-  document.getElementById('clickerFrame').style.borderColor = "#FFFFFF"
-} else{
-  document.getElementById('frameContainer').style.borderColor = borderColour
-  document.getElementById('clickerFrame').style.borderColor = borderColour
+let callerName, callPass, clickerCode, backgroundColour, borderColour, logo, short
+
+if (urlParams.get('a')){
+  console.log("a")
+  short = urlParams.get('a')
+  useShort()
+} else {
+  callerName = urlParams.get('name')
+  callPass = urlParams.get('callpass')
+  clickerCode = urlParams.get('clickercode')
+  backgroundColour = "#"+urlParams.get('backgroundcolour')
+  borderColour = "#"+urlParams.get('bordercolour')
+  logo = urlParams.get('logo')
+  refreshDetails()
+}
+/*
+console.log("name: " + callerName)
+console.log("callPass: " + callPass)
+console.log("clickerCode: " + clickerCode)
+console.log("borderColour: " + borderColour)
+console.log("backgroundColour: " + backgroundColour)
+console.log("logo: " + logo)
+console.log("short: " + short)
+*/
+
+////////////////////////////////
+
+function useShort(){
+
+var ref = firebase.database().ref(short);
+
+ref.once("value")
+  .then(function(snapshot) {
+    var a = snapshot.exists()
+    if (a==true){
+        console.log("Short Code: "+short+" exists")
+
+        callerName = snapshot.child("name").val()
+        callPass = snapshot.child("callPass").val()
+        clickerCode = snapshot.child("clickerCode").val()
+        backgroundColour = snapshot.child("backgroundColour").val()
+        borderColour = snapshot.child("borderColour").val()
+        logo = true
+
+
+        console.log("name: " + callerName)
+        console.log("callPass: " + callPass)
+        console.log("clickerCode: " + clickerCode)
+        console.log("borderColour: " + borderColour)
+        console.log("backgroundColour: " + backgroundColour)
+        console.log("logo: " + logo)
+        console.log("short: " + short)
+
+        refreshDetails()
+    } else {
+    }
+  });
 }
 
-if (logo == "false"){
-  document.getElementById('logo').style.display = "none"
-}
 
-  var clickerUrl = `https://internetclicker.com?code=${clickerCode}&branding=false&name=${name}&hs=1`
+
+
+
+/////////////////////////
+
+function refreshDetails(){
+    document.getElementById('indexBody').style.backgroundColor = "#"+backgroundColour
+    document.getElementById('frameContainer').style.borderColor = "#"+borderColour
+    document.getElementById('clickerFrame').style.borderColor = "#"+borderColour
+
+  if (logo == "false"){
+    document.getElementById('logo').style.display = "none"
+  }
+
+  var clickerUrl = `https://internetclicker.com?code=${clickerCode}&branding=false&name=${callerName}&hs=1`
   var clickerFrame = document.getElementById("clickerFrame")
   clickerFrame.src = clickerUrl
 
-  var callerUrl = `https://advanced.vmixcall.com/call.htm?Key=${callPass}&Name=${name}`
+  var callerUrl = `https://advanced.vmixcall.com/call.htm?Key=${callPass}&Name=${callerName}`
   var callerFrame = document.getElementById("callerFrame")
   callerFrame.src = callerUrl
+}

@@ -19,10 +19,6 @@
       <label for="clickerCodeInput">Internet Clicker Code</label>
       <input type="text" id="clickerCodeInput" value='badgerbadgerbadger' size=30>
       <br>
-      <input type="checkbox" id="optionalCheckbox" onclick="showOptional()">
-      <strong>Use Optional Settings</strong>
-      <br>
-      <form id="optional" style="display:none">
       <label for="backgroundColour">Background Colour (hex value without # eg. df7020)</label>
       <input type="text" id="backgroundColourInput" value='df7020' size=30>
       <br>
@@ -30,9 +26,10 @@
       <input type="text" id="borderColourInput" value='FFFFFF' size=30>
       <input type="checkbox" id="logoCheckbox">
       <strong>Hide Scene Change Logo</strong>
-      </form>
+      <br>
       <button id="copyBtn">Copy link to clipboard</button>
       <button id="goBtn">Go to link</button>
+      <button id="shortBtn">Create Short Link</button>
       <br>
       <code id="linkOutput"></code>
       <br id="extraLine">
@@ -41,77 +38,20 @@
   </div>
 </body>
 </html>
+<!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
 
-<script type="text/javascript">
+  <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js"></script>
 
-var linkOutput = document.getElementById('linkOutput')
-linkOutput.style.display = "none"
+  <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+  <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-analytics.js"></script>
 
-var extraLine = document.getElementById('extraLine')
-extraLine.style.display = "block"
+  <!-- Add Firebase products that you want to use -->
+  <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-database.js"></script>
 
-const copyBtn = document.getElementById('copyBtn');
-copyBtn.addEventListener("click" ,copyBtnPressed);
+<script type="text/javascript" src="/builder.js">
 
-const goBtn = document.getElementById('goBtn');
-goBtn.addEventListener("click" ,gotoBtnPressed);
-
-var link = 'initial data'
-var optionalCheckbox = document.getElementById("optionalCheckbox");
-
-var logoCheckbox = document.getElementById("logoCheckbox");
-
-function copyBtnPressed(){
-  updateLink(copyLink)
-}
-
-function gotoBtnPressed(){
-  updateLink(gotoLink)
-}
-
-function updateLink(callback){
-  var nameInput = document.getElementById('nameInput').value
-  var nameClean = encodeURIComponent(nameInput)
-  var callPass = document.getElementById('callPassInput').value
-  var clickerCode = document.getElementById('clickerCodeInput').value
-  var backgroundColour = document.getElementById('backgroundColourInput').value
-  var borderColour = document.getElementById('borderColourInput').value
-
-  console.log("name: " + nameInput)
-  console.log("callpass: " + callPass)
-  console.log("clickercode: " + clickerCode)
-
-  link = `https://contribute.streamchange.com/?name=${nameClean}&callpass=${callPass}&clickercode=${clickerCode}`
-
-  if(optionalCheckbox.checked == true){
-    link += `&backgroundcolour=${backgroundColour}&bordercolour=${borderColour}`
-    if(logoCheckbox.checked == true){
-      link+= `&logo=false`
-    }
-  }
-  callback()
-}
-
-
-function copyLink(){
-  navigator.clipboard.writeText(""+link)
-  linkOutput.innerText = 'Copied link to clipboard'
-  linkOutput.style.display = "block"
-  extraLine.style.display = "none"
-  document.activeElement.blur()
-}
-
-function gotoLink(){
-  window.location.assign(link);
-}
-
-function showOptional() {
-  var text = document.getElementById("optional");
-  if (optionalCheckbox.checked == true){
-    text.style.display = "block";
-  } else {
-    text.style.display = "none";
-  }
-}
 
 </script>
