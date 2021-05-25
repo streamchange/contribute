@@ -33,8 +33,8 @@ if (urlParams.get('a')){
   callerName = urlParams.get('name')
   callPass = urlParams.get('callpass')
   clickerCode = urlParams.get('clickercode')
-  backgroundColour = "#"+urlParams.get('backgroundcolour')
-  borderColour = "#"+urlParams.get('bordercolour')
+  backgroundColour = urlParams.get('backgroundcolour')
+  borderColour = urlParams.get('bordercolour')
   logo = urlParams.get('logo')
   refreshDetails()
 }
@@ -77,7 +77,6 @@ ref.once("value")
         console.log("short: " + short)
 
         refreshDetails()
-    } else {
     }
   });
 }
