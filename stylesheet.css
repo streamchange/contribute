@@ -65,7 +65,7 @@
 
 
 .sideBarRight{
-  width: 14%;
+  width: 23%;
   height: 100%;
   position: relative;
   float: right;
@@ -76,12 +76,11 @@ align-self: flex-end
 }
 .logo{
   border:0px #ffffff none;
-  width: 100%;
-  height: 40%;
+  width: 50%;
 }
 
 .frameContainerer{
-  width:85%;
+  width: 75%;
 }
 .frameContainer {
   position: relative;
@@ -109,10 +108,10 @@ align-self: flex-end
   width: 100%;
   height: 100%;
   border: 4px solid;
-  border-color: black;
+  border-color: pink;
   border-radius: 20px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
+  overflow: hidden;
 }
 
 
