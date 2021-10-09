@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Build A Contributor Link 🦀</title>
+  <link rel="stylesheet" href="stylesheet.css">
+</head>
+
+
+<body class="body">
+  <button id="apiTest"></button>
+  <div class="responsive">
+    <div class="form">
+      <h1>Build A Contributor Link 🦀</h1>
+      <label for="nameInput">Presenter Name</label>
+      <input type="text" id="nameInput" value='Nick Waterman' size=30>
+      <br>
+      <label for="callPassInput">vMix Call Password</label>
+      <input type="text" id="callPassInput" value='7744808725' size=30>
+      <br>
+      <label for="clickerCodeInput">Internet Clicker Code</label>
+      <input type="text" id="clickerCodeInput" value='badgerbadgerbadger' size=30>
+      <br>
+      <label for="backgroundColour">Background Colour (hex value without # eg. df7020)</label>
+      <input type="text" id="backgroundColourInput" value='df7020' size=30>
+      <br>
+      <label for="borderColour">Border Colour (hex value without # eg. FFFFFF)</label>
+      <input type="text" id="borderColourInput" value='FFFFFF' size=30>
+      <input type="checkbox" id="logoCheckbox">
+      <strong>Hide Scene Change Logo</strong>
+      <br>
+      <button id="shortBtn">Copy Link To Clipboard</button>
+      <br>
+      <code id="linkOutput"></code>
+      <br id="extraLine">
+
+    </div>
+  </div>
+</body>
+</html>
+<!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+
+  <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js"></script>
+
+  <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+  <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-analytics.js"></script>
+
+  <!-- Add Firebase products that you want to use -->
+  <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-database.js"></script>
+
+<script type="text/javascript" src="/builderdev.js">
+
+
+</script>

@@ -131,3 +131,11 @@ function pushToDatabase(){
   console.log("Pushed '"+short+"' to database")
 }
 
+const apiTestBtn = document.getElementById('apiTest')
+apiTestBtn.addEventListener("click", tryVmixApi)
+function tryVmixApi(){
+  fetch('http://localhost:8088/api')
+  .then(res => res.text())
+  .then(body => console.log(body))
+  .catch(err => logError(err))
+}
