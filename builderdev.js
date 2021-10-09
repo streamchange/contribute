@@ -134,7 +134,7 @@ function pushToDatabase(){
 const apiTestBtn = document.getElementById('apiTest')
 apiTestBtn.addEventListener("click", tryVmixApi)
 function tryVmixApi(){
-  fetch('http://localhost:8088/api')
+  fetch('http://127.0.0.1:8088/api')
   .then(res => res.text())
   .then(body => console.log(body))
   .catch(err => logError(err))
