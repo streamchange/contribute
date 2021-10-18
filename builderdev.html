@@ -7,16 +7,15 @@
 
 
 <body class="body">
-  <button id="apiTest">Try vMix Local API</button>
   <div class="responsive">
     <div class="form">
       <h1>Build A Contributor Link 🦀</h1>
-      <label for="nameInput">Presenter Name</label>
+      <!--label for="nameInput">Presenter Name</label>
       <input type="text" id="nameInput" value='Nick Waterman' size=30>
       <br>
       <label for="callPassInput">vMix Call Password</label>
       <input type="text" id="callPassInput" value='7744808725' size=30>
-      <br>
+      <br-->
       <label for="clickerCodeInput">Internet Clicker Code</label>
       <input type="text" id="clickerCodeInput" value='badgerbadgerbadger' size=30>
       <br>
@@ -25,17 +24,33 @@
       <br>
       <label for="borderColour">Border Colour (hex value without # eg. FFFFFF)</label>
       <input type="text" id="borderColourInput" value='FFFFFF' size=30>
-      <input type="checkbox" id="logoCheckbox">
+      <!--input type="checkbox" id="logoCheckbox">
       <strong>Hide Scene Change Logo</strong>
+      <br-->
+      <div id="drop_zone" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);">
+        <br>
+        <br>
+        <p id="dropText" style="text-align:center;">Drag vMix preset file here</p>
+        <br>
+
+
+      </div>
       <br>
-      <button id="shortBtn">Copy Link To Clipboard</button>
-      <br>
-      <code id="linkOutput"></code>
-      <br id="extraLine">
+      <button id="createLinksBtn" onclick="createLinks()" disabled>Create Links</button>
+      <button id="cancelBtn" onClick="clearPresetData()">Clear</button>
+      <div id='output'>
+        <br>
+        <table id='outputTable'>
+          <tr>
+            <td>Name</td>
+            <td>Link</td>
+          </tr>
+        </table>
+        <br>
+      </div>
 
     </div>
   </div>
-  <iframe src="http://localhost:8088/api"></iframe>
 </body>
 </html>
 <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
@@ -50,8 +65,9 @@
   <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-firestore.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-database.js"></script>
+  <script type="text/javascript" src="/xmlToJSON.js"></script>
+  <script type="text/javascript" src="/builderdev.js">
 
-<script type="text/javascript" src="/builderdev.js">
 
 
 </script>
