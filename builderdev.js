@@ -82,6 +82,7 @@ function pushToDatabase(){
     var timestamp = new Date
     //console.log(timestamp)
     let short = shortArray[i]
+    updateParams()
 
     firebase.database().ref('/'+short).set({
       short:short, 
