@@ -4,9 +4,9 @@ let longParams
 
 var nameClean
 var callPass
-var clickerCode = document.getElementById('clickerCodeInput').value
-var backgroundColour = document.getElementById('backgroundColourInput').value
-var borderColour = document.getElementById('borderColourInput').value
+var clickerCode  // = document.getElementById('clickerCodeInput').value
+var backgroundColour// = document.getElementById('backgroundColourInput').value
+var borderColour// = document.getElementById('borderColourInput').value
 
 let extractedDetails = [];
 
@@ -29,13 +29,13 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
-var key = "key"
-var value = "value"
+//var key = "key"
+//var value = "value"
 
 function updateParams(){
-    nameInput = document.getElementById('nameInput').value
-    nameClean = encodeURIComponent(nameInput)
-    callPass = document.getElementById('callPassInput').value
+    //nameInput = document.getElementById('nameInput').value
+    //nameClean = encodeURIComponent(nameInput)
+    //callPass = document.getElementById('callPassInput').value
     clickerCode = document.getElementById('clickerCodeInput').value
     backgroundColour = document.getElementById('backgroundColourInput').value
     borderColour = document.getElementById('borderColourInput').value
@@ -54,7 +54,7 @@ function createShortURL(arg){
       console.log('String "'+shortTemp+'"already exists')
       createShortURL(arg)
     } else {
-      console.log("generated short code: " + shortTemp)
+      console.log("generated short code: " + shortTemp + clickerCode)
       shortArray.push(shortTemp)
       console.log(shortArray)
       pushReady()
@@ -82,14 +82,14 @@ function pushToDatabase(){
     var timestamp = new Date
     //console.log(timestamp)
     let short = shortArray[i]
-    updateParams()
+    let updatedClickerCode = document.getElementById('clickerCodeInput').value
 
     firebase.database().ref('/'+short).set({
       short:short, 
       date:timestamp.toISOString(),
       name:extractedDetails[i][1],
       callPass:extractedDetails[i][2],
-      clickerCode:clickerCode,
+      clickerCode:updatedClickerCode,
       backgroundColour:backgroundColour,
       borderColour:borderColour,
     })
@@ -209,6 +209,7 @@ function extractPreset(data){
 
 function createLinks(){
   document.getElementById('createLinksBtn').blur()
+  updateParams()
   numShorts = extractedDetails.length
   console.log(`Number of links to create: ${numShorts}`)
   extractedDetails.forEach(element => createShortURL())
