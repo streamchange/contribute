@@ -186,7 +186,9 @@ function extractPreset(data){
   for (i=0; i < data['XML']['0'].Input.length; i++) {
     //If input is a call (type 6000)
     if (data['XML']['0']['Input'][i]['_attr']['Type']['_value'] == 6000){
-      callPass = data['XML']['0']['Input'][i]['_attr']['VideoCallKey']['_value']
+      callPass = data['XML']['0']['Input'][i]['_attr']['VideoCallKey']['_value'].toString().padStart(10,"0")
+      console.log(callPass)
+
       if(data['XML']['0']['Input'][i]['_attr']['Title']){
         nameInput = data['XML']['0']['Input'][i]['_attr']['Title']['_value']
         nameClean = encodeURIComponent(data['XML']['0']['Input'][i]['_attr']['Title']['_value'])
