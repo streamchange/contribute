@@ -1,39 +1,97 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Build A Contributor Link 🦀</title>
+  <title>Bulk-Build A Contributor Link 🦀</title>
   <link rel="stylesheet" href="stylesheet.css">
 </head>
 
 
-<body class="body">
-  <div class="responsive">
-    <div class="form">
-      <h1>Build A Contributor Link 🦀</h1>
-      <label for="nameInput">Presenter Name</label>
-      <input type="text" id="nameInput" value='Nick Waterman' size=30>
-      <br>
-      <label for="callPassInput">vMix Call Password</label>
-      <input type="text" id="callPassInput" value='7744808725' size=30>
-      <br>
-      <label for="clickerCodeInput">Internet Clicker Code</label>
-      <input type="text" id="clickerCodeInput" value='badgerbadgerbadger' size=30>
-      <br>
-      <label for="backgroundColour">Background Colour (hex value without # eg. df7020)</label>
-      <input type="text" id="backgroundColourInput" value='df7020' size=30>
-      <br>
-      <label for="borderColour">Border Colour (hex value without # eg. FFFFFF)</label>
-      <input type="text" id="borderColourInput" value='FFFFFF' size=30>
-      <input type="checkbox" id="logoCheckbox">
-      <strong>Hide Scene Change Logo</strong>
-      <br>
-      <button id="shortBtn">Copy Link To Clipboard</button>
-      <br>
-      <code id="linkOutput"></code>
-      <br id="extraLine">
 
-    </div>
+
+
+
+
+
+
+<body class="body">
+
+  <div id="signup">
+    <section id="whenSignedOut">
+        <div class="signUpSection">
+          <div class="box">
+            <h1>Please Sign In To Build Contributor Links 🦀</h1>
+            <p>You must sign in with an approved email domain ie. "---@scenechange.com.au" or be specifically white-listed</p>
+            <button id="signInBtn">Sign In</button>
+
+          </div>
+        </div>
+    </section>
   </div>
+  
+  <section id="whenSignedIn" hidden="true">
+    <div id="leftPanel" class="box">
+      <div id="userDetails"><button type="button" id="signOutBtn" onclick="auth.signOut();
+        location.reload();">Sign Out</button></div>
+      
+    </div>
+
+
+    <div class="responsive">
+      <div class="box">
+        <h1>Build A Contributor Link 🦀</h1>
+        <small>(Or more than one if you want)</small>
+        <br>
+        <br>
+        <!--label for="nameInput">Presenter Name</label>
+        <input type="text" id="nameInput" value='Nick Waterman' size=30>
+        <br>
+        <label for="callPassInput">vMix Call Password</label>
+        <input type="text" id="callPassInput" value='7744808725' size=30>
+        <br-->
+        <label for="clickerCodeInput">Internet Clicker Code</label>
+        <input type="text" id="clickerCodeInput" value='ChangeMe' size=30>
+        <br>
+        <label for="backgroundColour">Background Colour (hex value without # eg. df7020)</label>
+        <input type="text" id="backgroundColourInput" value='df7020' size=30>
+        <br>
+        <label for="borderColour">Border Colour (hex value without # eg. FFFFFF)</label>
+        <input type="text" id="borderColourInput" value='FFFFFF' size=30>
+        <!--input type="checkbox" id="logoCheckbox">
+        <strong>Hide Scene Change Logo</strong>
+        <br-->
+        <div id="drop_zone" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);">
+          <br>
+          <br>
+          <p id="dropText" style="text-align:center;">Drag vMix preset file here</p>
+          <br>
+  
+  
+        </div>
+        <br>
+        <button id="createLinksBtn" onclick="createLinks()" disabled>Create Links</button>
+        <button id="cancelBtn" onClick="clearPresetData()">Clear</button>
+        <div id='output'>
+          <br>
+          <table id='outputTable'>
+            <tr>
+              <td>Name</td>
+              <td>Link</td>
+            </tr>
+          </table>
+          <br>
+        </div>
+  
+      </div>
+    </div>
+
+
+  </section>
+
+
+
+
+
+
 </body>
 </html>
 <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
@@ -48,8 +106,9 @@
   <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-firestore.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-database.js"></script>
+  <script type="text/javascript" src="/xmlToJSON.js"></script>
+  <script type="text/javascript" src="/builder.js">
 
-<script type="text/javascript" src="/builder.js">
 
 
 </script>
