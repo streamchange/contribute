@@ -26,7 +26,7 @@ if (queryString){
   console.log('queryString exists')
 } else {
   console.log("no params")
-  //Show Div that says "Please contact your technician"
+  document.getElementById('noParams').innerHTML = `<h3>An error has occurred, please contact your technician. Code: "noParams"</h3>`
 }
 
 let callerName, callPass, clickerCode, backgroundColour, borderColour, logo, short
